@@ -1,3 +1,8 @@
 <Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="GameList.Core/GameList.Core.csproj" />
+  <Project Path="GameList.DataAccess/GameList.DataAccess.csproj" />
   <Project Path="GameList/GameList.csproj" />
 </Solution>
