@@ -16,18 +16,26 @@ namespace GameList
     {
         public static IServiceProvider ServiceProvider { get; private set; } = null!;
 
+        public App()
+        {
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            ServiceProvider = serviceCollection.BuildServiceProvider();
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<GameListDbContext>(options =>
+                options.UseSqlite("Data Source=gamelist.db"));
+            services.AddTransient<GamesRepository>();
+            services.AddTransient<MainViewModel>();
+            services.AddTransient<MainWindow>();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddDbContext<GameListDbContext>(options =>
-                options.UseSqlite("Data Source=gamelist.db"));
-            serviceCollection.AddTransient<GamesRepository>();
-            serviceCollection.AddTransient<MainViewModel>();
-            serviceCollection.AddTransient<MainWindow>();
-
-            ServiceProvider = serviceCollection.BuildServiceProvider();
             using (var scope = ServiceProvider.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<GameListDbContext>();
@@ -38,5 +46,4 @@ namespace GameList
             mainWindow.Show();
         }
     }
-
 }
