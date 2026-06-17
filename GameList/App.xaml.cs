@@ -1,4 +1,6 @@
 ﻿using GameList.DataAccess;
+using GameList.DataAccess.Repositories;
+using GameList.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
@@ -21,6 +23,8 @@ namespace GameList
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddDbContext<GameListDbContext>(options =>
                 options.UseSqlite("Data Source=gamelist.db"));
+            serviceCollection.AddTransient<GamesRepository>();
+            serviceCollection.AddTransient<MainViewModel>();
             serviceCollection.AddTransient<MainWindow>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
@@ -29,7 +33,7 @@ namespace GameList
                 var dbContext = scope.ServiceProvider.GetRequiredService<GameListDbContext>();
                 dbContext.Database.Migrate();
             }
-
+            
             var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
