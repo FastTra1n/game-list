@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <ListView Name="GameList" ItemsSource="{Binding Games}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Progress" DisplayMemberBinding="{Binding Progress}"/>
+                    <GridViewColumn Header="Rating" DisplayMemberBinding="{Binding Rating}"/>
+                    <GridViewColumn Header="CoverURL" DisplayMemberBinding="{Binding CoverURL}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
