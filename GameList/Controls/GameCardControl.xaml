@@ -91,7 +91,7 @@
 
                 <Border Background="#E6E6E6" CornerRadius="6" Height="20" Width="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="N/A" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Rating}" FontWeight="Bold" VerticalAlignment="Center"/>
                         <TextBlock Text="⭐" VerticalAlignment="Center" Margin="0,0,3,0"/>
                     </StackPanel>
                 </Border>
@@ -99,13 +99,13 @@
         </Border>
 
         <TextBlock TextAlignment="Center" 
-                   Text="Game Title"
+                   Text="{Binding Title}"
                    TextTrimming="CharacterEllipsis"
                    FontWeight="Bold"
                    Margin="12,10,12,4"
                    Grid.Row="1" />
 
-        <TextBlock Text="Short...or maybe long game description."
+        <TextBlock Text="{Binding Description}"
                    TextWrapping="Wrap"
                    TextTrimming="CharacterEllipsis"
                    MaxHeight="36"
@@ -115,7 +115,7 @@
 
         <ProgressBar Style="{DynamicResource GameProgressBar}" Minimum="0"
                      Maximum="100"
-                     Value="80"
+                     Value="{Binding Progress}"
                      Height="5"
                      Foreground="#55D98C"
                      Background="#ECF0F1"
