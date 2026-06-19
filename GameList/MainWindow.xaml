@@ -4,19 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameList"
+        xmlns:userControls="clr-namespace:GameList.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListView Name="GameList" ItemsSource="{Binding Games}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
-                    <GridViewColumn Header="Progress" DisplayMemberBinding="{Binding Progress}"/>
-                    <GridViewColumn Header="Rating" DisplayMemberBinding="{Binding Rating}"/>
-                    <GridViewColumn Header="CoverURL" DisplayMemberBinding="{Binding CoverURL}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".25*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <ItemsControl ItemsSource="{Binding Games}" Background="{StaticResource GameListBackground}" Grid.Column="1">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:GameCardControl Margin="30" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Grid>
 </Window>
