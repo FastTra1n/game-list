@@ -19,7 +19,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <ItemsControl ItemsSource="{Binding Games}" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding Games}" Background="{StaticResource GameListBackground}" Grid.Column="1">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
