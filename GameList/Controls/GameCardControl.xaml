@@ -73,7 +73,7 @@
         </Style>
     </UserControl.Resources>
     
-    <Grid Width="200" Height="340">
+    <Grid MinWidth="150" MaxWidth="280" Height="320">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
