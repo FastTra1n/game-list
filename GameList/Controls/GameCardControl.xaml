@@ -124,7 +124,7 @@
                      Grid.Row="3" />
         <!-- TODO: Сделать так, чтобы линия, отделяющая теги от прогресс-бара, была укорочена на ~10% слева и справа. -->
         <Border BorderThickness="0,1,0,0" BorderBrush="#F0F0F0" Padding="12,8,12,12" Grid.Row="4">
-            <ItemsControl>
+            <ItemsControl ItemsSource="{Binding Tags}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
@@ -134,16 +134,10 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Background="#F2F4F4" CornerRadius="4" Padding="3" Margin="0,0,4,4">
-                            <TextBlock Text="Game Tag" FontSize="10" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding Name}" FontSize="10" FontWeight="Medium"/>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-
-                <ItemsControl.Items>
-                    <System:String>Первый тег</System:String>
-                    <System:String>Второй тег</System:String>
-                    <System:String>Третий тег</System:String>
-                </ItemsControl.Items>
             </ItemsControl>
         </Border>
     </Grid>
