@@ -73,7 +73,7 @@
         </Style>
     </UserControl.Resources>
     
-    <Grid MinWidth="150" MaxWidth="280" Height="320">
+    <Grid MinWidth="150" MaxWidth="200" Height="320">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -83,12 +83,12 @@
         </Grid.RowDefinitions>
         <Border Background="White" CornerRadius="10" Grid.RowSpan="5" />
 
-        <Border Grid.Row="0" CornerRadius="10,10,0,0" Background="#F5F5F5" ClipToBounds="True">
+        <Border Grid.Row="0" CornerRadius="10,10,0,0">
+            <Border.Background>
+                <ImageBrush ImageSource="{Binding CoverURL}" Stretch="UniformToFill" />
+            </Border.Background>
+            
             <Grid>
-                <TextBlock Text="Game Cover"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
-
                 <Border Background="#E6E6E6" CornerRadius="6" Height="20" Width="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="{Binding Rating}" FontWeight="Bold" VerticalAlignment="Center"/>
@@ -102,6 +102,7 @@
                    Text="{Binding Title}"
                    TextTrimming="CharacterEllipsis"
                    FontWeight="Bold"
+                   FontSize="16"
                    Margin="12,10,12,4"
                    Grid.Row="1" />
 
@@ -123,7 +124,7 @@
                      Grid.Row="3" />
         <!-- TODO: Сделать так, чтобы линия, отделяющая теги от прогресс-бара, была укорочена на ~10% слева и справа. -->
         <Border BorderThickness="0,1,0,0" BorderBrush="#F0F0F0" Padding="12,8,12,12" Grid.Row="4">
-            <ItemsControl>
+            <ItemsControl ItemsSource="{Binding Tags}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
@@ -133,16 +134,10 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Background="#F2F4F4" CornerRadius="4" Padding="3" Margin="0,0,4,4">
-                            <TextBlock Text="Game Tag" FontSize="10" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding Name}" FontSize="10" FontWeight="Medium"/>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-
-                <ItemsControl.Items>
-                    <System:String>Первый тег</System:String>
-                    <System:String>Второй тег</System:String>
-                    <System:String>Третий тег</System:String>
-                </ItemsControl.Items>
             </ItemsControl>
         </Border>
     </Grid>
