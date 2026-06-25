@@ -414,5 +414,9 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
 
+# Ignore game covers
+GameList/Assets/Covers/*
+!GameList/Assets/Covers/.gitkeep
+
 # Development plan
 Plan.txt
